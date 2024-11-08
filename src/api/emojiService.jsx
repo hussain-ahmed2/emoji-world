@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "f88f8e3ab892778af3540664d810e38d09e1ad7a";
+const API_KEY = import.meta.env.API_KEY;
 const BASE_URL = "https://emoji-api.com/emojis";
 
 export const fetchEmojis = async (searchQuery) => {
