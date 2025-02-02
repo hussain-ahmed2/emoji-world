@@ -1,14 +1,12 @@
-import { useState } from "react";
 import Navbar from "./components/Navbar";
 import EmojiDisplay from "./components/EmojiDisplay";
 import Footer from "./components/Footer";
+import EmojiProvider from "./components/EmojiProvider";
 
 function App() {
-  const [search, setSearch] = useState("");
-
-  return (
-    <div className="App">
-      <Navbar search={search} setSearch={setSearch} />
+   return (
+    <EmojiProvider>
+      <Navbar />
       <header className="bg-blue-600 text-white pt-32 pb-10 text-center">
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">
           Welcome to Emoji World 🌍
@@ -17,9 +15,9 @@ function App() {
           Search, explore, and copy from a vast collection of emojis!
         </p>
       </header>
-      <EmojiDisplay search={search} />
+      <EmojiDisplay />
       <Footer />
-    </div>
+    </EmojiProvider>
   );
 }
 

@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import { useState, useEffect, useContext } from "react";
+import { EmojiContext } from "./EmojiContext";
 
-const Navbar = ({ search, setSearch }) => {
+const Navbar = () => {
+  const {query, setQuery} = useContext(EmojiContext);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -12,7 +13,6 @@ const Navbar = ({ search, setSearch }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <nav
       className={`fixed top-0 w-full z-10 transition-all duration-300 ease-in-out ${
@@ -25,8 +25,8 @@ const Navbar = ({ search, setSearch }) => {
           type="text"
           placeholder="Search emojis..."
           className="mt-2 sm:mt-0 p-2 rounded w-full sm:w-64 text-gray-900"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
       </div>
     </nav>
@@ -34,8 +34,3 @@ const Navbar = ({ search, setSearch }) => {
 };
 
 export default Navbar;
-
-Navbar.propTypes = {
-  search: PropTypes.string.isRequired,
-  setSearch: PropTypes.func.isRequired,
-};
